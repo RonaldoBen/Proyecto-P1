@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="codigo.js/sistema.js"></script>
+    <script src="codigo.js/clases.js"></script>
+    <script src="codigo.js/codigo.js"></script>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <title>Obligatorio P1</title>
+  </head>
+  <body>
+    <div id="contenedor">
+      <header>
+        <img id="logo" src="https://p1.develotion.com/cart.jpg" alt="logo" />
+        <nav>
+          <!-- Botones -->
+          <ul id="navPrincipal">
+            <li id="btnSeccionCreaUsuario" class="btnSeccion user">
+              <a>Registro de Usuario</a>
+            </li>
+            <li id="btnSeccionLogin" class="btnSeccion user admin">
+              <a>Login</a>
+            </li>
+            <li id="btnSeccionCompra" class="btnSeccion user">
+              <a>Comprar</a>
+            </li>
+            <li id="btnSeccionOfertas" class="btnSeccion user">
+              <a>Ofertas</a>
+            </li>
+            <li id="btnSeccionCarrito" class="btnSeccion user">
+              <a>Carrito</a>
+            </li>
+            <li id="btnSeccionAdminCompras" class="btnSeccion admin">
+              <a>Administracion de compras</a>
+            </li>
+            <li id="btnSeccionCrearProducto" class="btnSeccion admin">
+              <a>Creacion de producto</a>
+            </li>
+            <li id="btnSeccionAdminProductos" class="btnSeccion admin">
+              <a>Administracion Productos</a>
+            </li>
+            <li id="btnSeccionBalance" class="btnSeccion admin">
+              <a>Balance de ventas</a>
+            </li>
+            <li id="LogOut">
+              <a>LogOut</a>
+            </li>
+          </ul>
+          <div id="mensajeBienvenida">
+            <p id="nombreUsuarioLogeado"></p>
+          </div>
+        </nav>
+      </header>
+      <!-- FIN CABEZAL -->
+      <main>
+        <!-- Seccion crear Usuario -->
+        <section id="seccionCreaUsuario" class="seccion">
+          <h2>Registro de nuevo usuario</h2>
+          <label for="txtNombre">Nombre</label>
+          <input type="text" id="txtNombre" /><br />
+          <label for="txtApellido">Apellido</label>
+          <input type="text" id="txtApellido" /><br />
+          <label for="txtNombreUsuario">Nombre Usuario</label>
+          <input type="text" id="txtNombreUsuario" /><br />
+          <label for="txtPass">Escriba un Password (Al menos 5 caracteres, 1 minuscula, 1 mayuscula y 1 numero)</label>
+          <input type="password" id="txtPass" /><br />
+          <label for="numTarjeta">Ingrese su tarjeta de credito:</label>
+          <input type="text" id="numTarjeta" /><br />
+          <label for="numCVC">Ingrese el CVC de su tarjeta:</label>
+          <input type="text" id="numCVC" /><br />
+          <input type="button" value="Registrar" id="btnRegistrarNuevoUsuario" />
+        </section>
+        <!-- Seccion login -->
+        <section id="seccionLogin" class="seccion">
+          <h2>Login</h2>
+          <label for="txtNombreUsuarioLogin">Nombre Usuario</label>
+          <input type="text" id="txtNombreUsuarioLogin" /><br />
+          <label for="txtPassLogin">Escriba un Password</label>
+          <input type="password" id="txtPassLogin" /><br />
+          <input type="button" value="Login" id="btnLogin" />
+        </section>
+        <!-- Seccion compras -->
+        <section id="seccionCompra" class="seccion">
+          <h2>Comprar</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th></th>
+                <th>Oferta si/no</th>
+                <th>Cantidad de unidades a comprar</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tblCompra"></tbody>
+          </table>
+        </section>
+
+        <!-- Seccion Ofertas -->
+        <section id="seccionOfertas" class="seccion">
+          <h2>Ofertas</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Cantidad de unidades a comprar</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tblOfertas"></tbody>
+          </table>
+        </section>
+
+        <!-- Seccion carrito -->
+        <section id="seccionCarrito" class="seccion">
+          <h2>Carrito</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Nombre del producto</th>
+                <th>Cantidad de unidades</th>
+                <th>Monto total por producto</th>
+                <th>Estado de la compra</th>
+                <th>Cancelar compra</th>
+                <th>
+                  <select id="slcFiltrarCarrito">
+                    <option value="todo">Mostrar todas las compras</option>
+                    <option value="pendientes">Mostrar compras pendientes</option>
+                    <option value="aprobadas">Mostrar compras aprobadas</option>
+                    <option value="canceladas">Mostrar compras canceladas</option>
+                  </select>
+                </th>
+                <th><input type="button" value="Filtrar" id="btnFiltrarCarrito" /></th>
+              </tr>
+            </thead>
+            <tbody id="tblCarrito"></tbody>
+          </table>
+          <p id="pTotalDeCompra">Total De Compra</p>
+        </section>
+
+        <!-- Seccion Administrador de compras -->
+        <section id="seccionAdminCompras" class="seccion">
+          <h2>Administracion de compras</h2>
+
+          <h3>Compras pendientes</h3>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>ID usuario</th>
+                <th>ID de la compra</th>
+                <th>ID del producto</th>
+                <th>Cantidad de productos</th>
+                <th>Estado del producto</th>
+              </tr>
+            </thead>
+            <tbody id="tblAdminComprasPendientes"></tbody>
+          </table>
+
+          <table border="1">
+            <h3>Compras canceladas</h3>
+            <thead>
+              <tr>
+                <th>ID usuario</th>
+                <th>ID de la compra</th>
+                <th>ID del producto</th>
+                <th>Cantidad de productos</th>
+                <th>Estado del producto</th>
+              </tr>
+            </thead>
+            <tbody id="tblAdminComprasCanceladas"></tbody>
+          </table>
+
+          <table border="1">
+            <h3>Compras Aprobadas</h3>
+            <thead>
+              <tr>
+                <th>Nombre de usuario</th>
+                <th>ID de usuario</th>
+                <th>ID de compra</th>
+                <th>Cantidad de productos</th>
+                <th>Estado del producto</th>
+              </tr>
+            </thead>
+            <tbody id="tblAdminComprasAprobadas"></tbody>
+          </table>
+        </section>
+
+        <!-- Seccion creacion de producto -->
+        <section id="seccionCrearProducto" class="seccion">
+          <h2>Creacion de producto</h2>
+          <label for="txtNombreProducto">Ingrese nombre del producto</label>
+          <input type="text" name="" id="txtNombreProducto" /><br />
+          <label for="txtPrecioProducto">Ingrese un precio</label>
+          <input type="text" id="txtPrecioProducto" /><br />
+          <label for="txtDescripcionProducto">Ingrese una descripcion</label>
+          <input type="text" id="txtDescripcionProducto" /><br />
+          <label for="fileImagenProducto">Ingrese una imagen</label>
+          <input type="file" name="" id="fileImagenProducto" /><br />
+          <label for="txtStockProducto">Ingrese el stock</label>
+          <input type="text" id="txtStockProducto" /><br />
+          <input type="button" value="Registrar producto" id="btnRegistrarNuevoProducto" />
+        </section>
+        <!-- Seccion Administrador de Productos -->
+        <section id="seccionAdminProductos" class="seccion">
+          <h2>Administracion de Productos</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Stock Actual</th>
+                <th>Modificar stock</th>
+                <th>Estado actual</th>
+                <th>Modificar estado</th>
+                <th>Oferta Actual</th>
+                <th>Oferta si/no</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tblAdminProductos"></tbody>
+          </table>
+        </section>
+        <!-- Seccion de Balance -->
+        <section id="seccionBalance" class="seccion">
+          <h2>Balance de ganancias</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad vendida</th>
+              </tr>
+            </thead>
+            <tbody id="tblTablaBalance"></tbody>
+          </table>
+          <p id="pBalance">Ganancias</p>
+        </section>
+      </main>
+      <!-- FIN CONTENIDO -->
+      <footer>
+        <a href="https://www.ort.edu.uy">Desarollado por Brian Moreira y Ronaldo Bentancur</a>
+      </footer>
+      <!-- FIN PIE -->
+    </div>
+    <!-- FIN CONTENEDOR -->
+  </body>
+</html>
